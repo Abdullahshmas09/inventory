@@ -1,0 +1,29 @@
+:root {
+    --heading-size: 24px;
+    --subheading-size: 15px;
+    --primary-color: #101540;
+    --drawer-background-color: #111641;
+    --pending-color: #e78500;
+    --completed-color: #53b889;
+    --Full-size:40px;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins', sans-serif;
+}
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--subheading-size);
+}
+h1{
+    font-size: var(--heading-size);
+}
