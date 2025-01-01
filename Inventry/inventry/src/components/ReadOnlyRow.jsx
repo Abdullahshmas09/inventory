@@ -1,24 +1,25 @@
 import React from "react";
-import { TableRow, TableCell, Button } from "@mui/material";
+import { TableCell, TableRow, Button } from "@mui/material";
 
 function ReadOnlyRow({ sale, handleEditClick, handleDelete }) {
   return (
     <TableRow>
-      <TableCell align="left">{sale.product}</TableCell>
+      <TableCell>{sale.product}</TableCell>
       <TableCell align="center">{sale.quantity}</TableCell>
       <TableCell align="center">{sale.total}</TableCell>
       <TableCell align="center">
         <Button
-          onClick={(event) => handleEditClick(event, sale)}
           variant="contained"
+          color="primary"
+          onClick={(event) => handleEditClick(event, sale)}
         >
           Edit
         </Button>
         <Button
-          sx={{ marginLeft: ".5rem" }}
-          onClick={() => handleDelete(sale.id)}
           variant="contained"
-          color="warning"
+          color="secondary"
+          onClick={() => handleDelete(sale.id)}
+          sx={{ ml: 1 }}
         >
           Delete
         </Button>

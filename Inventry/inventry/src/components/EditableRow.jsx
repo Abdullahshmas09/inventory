@@ -1,48 +1,59 @@
-import React from "react";
-import { TableRow, TableCell, Button, TextField } from "@mui/material";
+import React, { useState } from "react";
+import { TableCell, TableRow, TextField, Button } from "@mui/material";
 
-function EditableRow({
-  sale,
-  handleEditFormChange,
-  handleEditFormSubmit,
-  handleCancelClick,
-}) {
+function EditableRow({ sale, handleSaveClick, handleCancelClick }) {
+  const [editFormData, setEditFormData] = useState({
+    product: sale.product,
+    quantity: sale.quantity,
+    total: sale.total,
+  });
+
+  // Handle changes in the editable inputs
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setEditFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
     <TableRow>
-      <TableCell align="left">
+      <TableCell>
         <TextField
           name="product"
-          value={sale.product}
-          onChange={handleEditFormChange}
+          value={editFormData.product}
+          onChange={handleInputChange}
         />
       </TableCell>
-      <TableCell align="center">
+      <TableCell>
         <TextField
           name="quantity"
-          value={sale.quantity}
-          onChange={handleEditFormChange}
+          type="number"
+          value={editFormData.quantity}
+          onChange={handleInputChange}
         />
       </TableCell>
-      <TableCell align="center">
+      <TableCell>
         <TextField
           name="total"
-          value={sale.total}
-          onChange={handleEditFormChange}
+          value={editFormData.total}
+          onChange={handleInputChange}
         />
       </TableCell>
       <TableCell align="center">
         <Button
           variant="contained"
-          color="primary"
-          onClick={handleEditFormSubmit}
+          color="success"
+          onClick={() => handleSaveClick(sale.id, editFormData)}
         >
           Save
         </Button>
         <Button
-          variant="contained"
-          color="secondary"
+          variant="outlined"
+          color="error"
           onClick={handleCancelClick}
-          sx={{ marginLeft: ".5rem" }}
+          sx={{ ml: 1 }}
         >
           Cancel
         </Button>

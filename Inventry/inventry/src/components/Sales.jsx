@@ -1,138 +1,99 @@
 import React, { useState, Fragment } from "react";
-import Container from "@mui/material/Container";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
-import styled from "styled-components";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import { nanoid } from "nanoid"; // Generates unique IDs
-import ReadOnlyRow from "./ReadOnlyRow"; // Component for read-only rows
-import EditableRow from "./EditableRow"; // Component for editable rows
-
-// Styled components for enhanced UI
-const StyledTableCell = styled(TableCell)`
-  font-weight: bold;
-  color: #fff;
-  background-color: #1976d2;
-`;
-
-const StyledContainer = styled(Container)`
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-`;
-
-const FormContainer = styled(Box)`
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-`;
-
-const AddButton = styled(Button)`
-  background-color: #4caf50;
-  &:hover {
-    background-color: #388e3c;
-  }
-`;
-
-const Header = styled.h2`
-  font-family: "Roboto", sans-serif;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
-`;
+import {
+  Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  Box,
+  TextField,
+} from "@mui/material";
+import { nanoid } from "nanoid";
+import ReadOnlyRow from "./ReadOnlyRow";
+import EditableRow from "./EditableRow";
 
 function Sales() {
-  // State for tracking the ID of the row currently being edited
-  const [editSalesId, setEditSalesId] = useState(null);
+  const [salesData, setSalesData] = useState([
+    { id: nanoid(), product: "Product A", quantity: 3, total: "$30" },
+    { id: nanoid(), product: "Product B", quantity: 1, total: "$15" },
+  ]);
 
-  // State for storing form data to add a new sales entry
+  const [editSalesId, setEditSalesId] = useState(null); // To track the row being edited
   const [addFormData, setAddFormData] = useState({
     product: "",
     quantity: "",
     total: "",
   });
 
-  // State to hold the list of sales data
-  const [salesData, setSalesData] = useState([
-    { id: nanoid(), product: "Product A", quantity: 3, total: "$30" },
-    { id: nanoid(), product: "Product B", quantity: 1, total: "$15" },
-  ]);
-
-  // Handle changes in the "Add Item" form fields
+  // Handle form input changes for adding a new item
   const handleAddFormChange = (event) => {
-    event.preventDefault(); // Prevent default form behavior
-    const fieldName = event.target.getAttribute("name"); // Field name (e.g., product, quantity, total)
-    const fieldValue = event.target.value; // Value entered by the user
-    setAddFormData((prevData) => ({
-      ...prevData,
-      [fieldName]: fieldValue, // Update the specific field in the form data
-    }));
+    const { name, value } = event.target;
+    setAddFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle the submission of the "Add Item" form
+  // Handle adding a new item
   const handleAddFormSubmit = (event) => {
-    event.preventDefault(); // Prevent page reload
-
-    const newItem = {
-      id: nanoid(), // Generate a unique ID for the new entry
+    event.preventDefault();
+    const newSale = {
+      id: nanoid(),
       product: addFormData.product,
       quantity: addFormData.quantity,
       total: addFormData.total,
     };
-
-    // Update the salesData state with the new item
-    setSalesData((prevData) => [...prevData, newItem]);
-
-    // Reset the form fields
-    setAddFormData({
-      product: "",
-      quantity: "",
-      total: "",
-    });
+    setSalesData((prev) => [...prev, newSale]);
+    setAddFormData({ product: "", quantity: "", total: "" });
   };
 
-  // Delete a specific sale from the table
-  const handleDelete = (id) => {
-    setSalesData((prevData) => prevData.filter((sale) => sale.id !== id));
-  };
-
-  // Handle the "Edit" button click for a specific row
+  // Handle clicking the Edit button
   const handleEditClick = (event, sale) => {
-    event.preventDefault(); // Prevent default behavior
+    event.preventDefault();
     setEditSalesId(sale.id); // Set the ID of the row being edited
   };
 
-  return (
-    <StyledContainer maxWidth="lg">
-      <Header>Sales Overview</Header>
+  // Handle saving changes made to the editable row
+  const handleSaveClick = (id, updatedData) => {
+    setSalesData((prev) =>
+      prev.map((sale) => (sale.id === id ? { ...sale, ...updatedData } : sale))
+    );
+    setEditSalesId(null); // Exit edit mode
+  };
 
-      {/* Table to display sales data */}
+  // Handle canceling edit mode
+  const handleCancelClick = () => {
+    setEditSalesId(null); // Exit edit mode without saving
+  };
+
+  // Handle deleting an item
+  const handleDelete = (id) => {
+    setSalesData((prev) => prev.filter((sale) => sale.id !== id));
+  };
+
+  return (
+    <Container>
+      <h2>Sales Overview</h2>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">Product</StyledTableCell>
-              <StyledTableCell align="center">Quantity</StyledTableCell>
-              <StyledTableCell align="center">Total</StyledTableCell>
-              <StyledTableCell align="center">Actions</StyledTableCell>
+              <TableCell>Product</TableCell>
+              <TableCell align="center">Quantity</TableCell>
+              <TableCell align="center">Total</TableCell>
+              <TableCell align="center">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {salesData.map((sale) => (
               <Fragment key={sale.id}>
-                {/* Render editable or read-only rows based on the edit state */}
                 {editSalesId === sale.id ? (
-                  <EditableRow sale={sale} />
+                  <EditableRow
+                    sale={sale}
+                    handleSaveClick={handleSaveClick}
+                    handleCancelClick={handleCancelClick}
+                  />
                 ) : (
                   <ReadOnlyRow
                     sale={sale}
@@ -146,43 +107,38 @@ function Sales() {
         </Table>
       </TableContainer>
 
-      {/* Form to add new sales items */}
-      <FormContainer>
-        <Header>Add Item</Header>
-        <form onSubmit={handleAddFormSubmit}>
-          <Box display="flex" gap="10px" textAlign="center">
-            <TextField
-              label="Product Name"
-              variant="outlined"
-              required
-              name="product"
-              value={addFormData.product}
-              onChange={handleAddFormChange}
-            />
-            <TextField
-              label="Quantity"
-              variant="outlined"
-              type="number"
-              required
-              name="quantity"
-              value={addFormData.quantity}
-              onChange={handleAddFormChange}
-            />
-            <TextField
-              label="Total"
-              variant="outlined"
-              required
-              name="total"
-              value={addFormData.total}
-              onChange={handleAddFormChange}
-            />
-            <AddButton variant="contained" type="submit">
-              Add Item
-            </AddButton>
-          </Box>
-        </form>
-      </FormContainer>
-    </StyledContainer>
+      <Box component="form" onSubmit={handleAddFormSubmit} mt={2}>
+        <TextField
+          label="Product"
+          name="product"
+          value={addFormData.product}
+          onChange={handleAddFormChange}
+          required
+   
+        />
+        <TextField
+          label="Quantity"
+          name="quantity"
+          type="number"
+          value={addFormData.quantity}
+          onChange={handleAddFormChange}
+          required
+        
+          sx={{ mx: 2 }}
+        />
+        <TextField
+          label="Total"
+          name="total"
+          value={addFormData.total}
+          onChange={handleAddFormChange}
+          required
+       
+        />
+        <Button type="submit" variant="contained" sx={{marginLeft:"1rem" , marginTop:".5rem"}}>
+          Add Item
+        </Button>
+      </Box>
+    </Container>
   );
 }
 
