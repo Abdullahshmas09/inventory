@@ -17,6 +17,7 @@ import Search from '../images/search.png';
 import Bel from '../images/bell.png';
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from '../redux/slices/counterSlice';
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
     drawerPaper: {
@@ -38,6 +39,7 @@ const useStyles = makeStyles({
 
 function Layout({ children }) {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const classes = useStyles();
     const [drawerOpen, setDrawerOpen] = useState(false);
     const toggleDrawer = (open) => () => {
@@ -49,6 +51,8 @@ function Layout({ children }) {
 
     const handleLogout = () => {
         dispatch(logout());
+        navigate("/")
+        
     };
 
     return (
@@ -80,6 +84,7 @@ function Layout({ children }) {
                                 >
                                     Logout
                                 </Button>
+                                
                             </Box>
                         ) : (
                             <>
@@ -141,8 +146,16 @@ function Layout({ children }) {
                     <Link to="/order">
                         <DashboardIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
                     </Link>
+                    
                     <Typography color="initial" style={{ marginLeft: ".7rem" }} className={classes.bottom}>
                         Order
+                    </Typography>
+                    <Link to="/sales">
+                        <DashboardIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
+                    </Link>
+                    
+                    <Typography color="initial" style={{ marginLeft: ".7rem" }} className={classes.bottom}>
+                        Sales
                     </Typography>
                 </div>
             </Drawer>

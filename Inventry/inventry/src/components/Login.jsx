@@ -10,10 +10,11 @@ import {
 import loginImage from "../images/Login.png";
 import GoogleIcon from "@mui/icons-material/Google";
 import { FormControlLabel, Checkbox } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/slices/counterSlice";
+
 
  
 
@@ -27,6 +28,7 @@ const Image = styled.img`
 function Login() {
 
    const dispatch = useDispatch()
+   const navigate = useNavigate()
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -44,6 +46,7 @@ function Login() {
         e.preventDefault()
         console.log(formData)
         dispatch(login(formData))
+        navigate("/dashboard")
     }
     return (
         <Container maxWidth="lg">

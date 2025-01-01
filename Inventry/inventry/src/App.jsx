@@ -9,6 +9,7 @@ import Order from './components/Order';
 import ScrollToTop from './ScrollToTopp';
 import Products from './components/Products';
 import Stock from './components/Stock';
+import Sales from './components/Sales';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/order" element={<Order />} />
           <Route path="/product" element={<Products />} />
           <Route path="/stock" element={<Stock />} />
+          <Route path="/sales" element={<Sales />} />
         </Routes>
       </Layout>
     </Router>

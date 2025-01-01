@@ -58,7 +58,7 @@ const data = [
         sales: 'store name',
         Destination: 'Kathmandu',
         items: '5',
-        Status: <Button sx={{ background: '#bce785', color: 'black' }}>pending</Button>,
+        Status: <Button sx={{ background: '#bce785', color: 'black' , width:"118px" }}>pending</Button>,
     },
     {
         id: 3,

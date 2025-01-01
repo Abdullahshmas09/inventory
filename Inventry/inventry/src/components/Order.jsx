@@ -58,7 +58,7 @@ const data = [
         sales: 'store name',
         Destination: 'Kathmandu',
         items: '5',
-        Status: <Button sx={{ background: '#bce785', color: 'black' , width:"120px"}}>pending</Button>,
+        Status: <Button sx={{ background: '#bce785', color: 'black', width: "120px" }}>pending</Button>,
     },
     {
         id: 3,
@@ -145,41 +145,53 @@ function Order() {
 
     return (
         <Cont maxWidth="lg">
-            <Box sx={{'@media(max-width:576px)':{
-                display:"flex",
-                flexDirection:"column"
-            }}}>
+            <Box sx={{
+                '@media(max-width:576px)': {
+                    display: "flex",
+                    flexDirection: "column"
+                }
+            }}>
                 <Typography>Orders</Typography>
-                <Box  sx={{'@media(max-width:576px)':{
-                display:"flex",
-                flexDirection:"column",
-              
-            }}}>
-                    <Button variant="outlined" color="primary" sx={{'@media(max-width:576px)':{
-                marginTop:".5rem"
-              
-            }}}>
+                <Box sx={{
+                    '@media(max-width:576px)': {
+                        display: "flex",
+                        flexDirection: "column",
+
+                    }
+                }}>
+                    <Button variant="outlined" color="primary" sx={{
+                        '@media(max-width:576px)': {
+                            marginTop: ".5rem"
+
+                        }
+                    }}>
                         Export to Excel
                     </Button>
-                    <Button variant="outlined" color="primary" sx={{'@media(max-width:576px)':{
-                marginTop:".5rem"
-              
-            }}}>
+                    <Button variant="outlined" color="primary" sx={{
+                        '@media(max-width:576px)': {
+                            marginTop: ".5rem"
+
+                        }
+                    }}>
                         Import Orders
                     </Button>
-                    <Button variant="contained" color="primary" startIcon={<AddIcon />} sx={{'@media(max-width:576px)':{
-                marginTop:".5rem"
-              
-            }}}>
+                    <Button variant="contained" color="primary" startIcon={<AddIcon />} sx={{
+                        '@media(max-width:576px)': {
+                            marginTop: ".5rem"
+
+                        }
+                    }}>
                         New Orders
                     </Button>
                 </Box>
             </Box>
             <hr color="#f3f4ff" />
-            <Box sx={{'@media(max-width:576px)':{
-                display:"flex",
-                flexDirection:"column"
-            }}}>
+            <Box sx={{
+                '@media(max-width:576px)': {
+                    display: "flex",
+                    flexDirection: "column"
+                }
+            }}>
                 <TextField
                     id="outlined-basic"
                     label="Search Order ID"
@@ -195,10 +207,12 @@ function Order() {
                     }}
                     className={classes.spacing}
                 />
-                <Box display="flex" gap={1} alignItems="center" mt={1} sx={{'@media(max-width:576px)':{
-                display:"flex",
-                flexDirection:"column"
-            }}}>
+                <Box display="flex" gap={1} alignItems="center" mt={1} sx={{
+                    '@media(max-width:576px)': {
+                        display: "flex",
+                        flexDirection: "column"
+                    }
+                }}>
                     <CalendarMonthIcon className={classes.sp1} />
                     <FormControl fullWidth>
                         <InputLabel id="sales-label">Sales</InputLabel>
@@ -207,8 +221,8 @@ function Order() {
                             value={filters.sales}
                             onChange={handleFilterChange('sales')}
                         >
-                            <MenuItem value="Store A">Store A</MenuItem>
-                            <MenuItem value="Store B">Store B</MenuItem>
+                            <MenuItem value="Store A">sales</MenuItem>
+                            <MenuItem value="Store B">sales</MenuItem>
                         </Select>
                     </FormControl>
                     <FormControl fullWidth>
@@ -218,8 +232,19 @@ function Order() {
                             value={filters.status}
                             onChange={handleFilterChange('status')}
                         >
-                            <MenuItem value="completed">Completed</MenuItem>
-                            <MenuItem value="pending">Pending</MenuItem>
+                            <MenuItem value="completed">status</MenuItem>
+                            <MenuItem value="pending">status</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <FormControl fullWidth>
+                        <InputLabel id="status-label">Filter</InputLabel>
+                        <Select
+                            labelId="status-label"
+                            value={filters.filter}
+                            onChange={handleFilterChange('filter')}
+                        >
+                            <MenuItem value="completed">filter</MenuItem>
+                            <MenuItem value="pending">filter</MenuItem>
                         </Select>
                     </FormControl>
                 </Box>
