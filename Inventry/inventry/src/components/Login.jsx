@@ -12,7 +12,10 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { FormControlLabel, Checkbox } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/slices/counterSlice";
 
+ 
 
 const Image = styled.img`
 @media (max-width: 576px) {
@@ -22,6 +25,8 @@ const Image = styled.img`
 `
 
 function Login() {
+
+   const dispatch = useDispatch()
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -38,11 +43,8 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(formData)
-
+        dispatch(login(formData))
     }
-
-
-
     return (
         <Container maxWidth="lg">
             <Grid2 container spacing={2} sx={{ marginTop: "3rem" }}>
@@ -90,14 +92,14 @@ function Login() {
                                 inputProps={{
                                     pattern: "^[A-Z].*123$",
 
-                                    title: "password must start with Cl and end with 123"
+                                 
                                 }}
                                 onChange={handleChange}
                             />
                             <Box display="flex" mx="" my="" sx="">
                                 <FormControlLabel
                                     control={<Checkbox defaultChecked />}
-                                    label="Remember me          Forgot Password"
+                                    label="Remember me   Forgot Password"
                                 />
                             </Box>
                             <Button

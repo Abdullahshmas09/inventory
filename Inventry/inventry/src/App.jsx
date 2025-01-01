@@ -7,11 +7,13 @@ import Dashboard from './components/Dashboard';
 import Layout from './components/Layout';
 import Order from './components/Order';
 import ScrollToTop from './ScrollToTopp';
+import Products from './components/Products';
+import Stock from './components/Stock';
+
 
 function App() {
   return (
     <Router>
-      {/* ScrollToTop ensures scrolling to the top on every route change */}
       <ScrollToTop />
       <Layout>
         <Routes>
@@ -20,6 +22,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/order" element={<Order />} />
+          <Route path="/product" element={<Products />} />
+          <Route path="/stock" element={<Stock />} />
         </Routes>
       </Layout>
     </Router>

@@ -58,7 +58,7 @@ const data = [
         sales: 'store name',
         Destination: 'Kathmandu',
         items: '5',
-        Status: <Button sx={{ background: '#bce785', color: 'black' , width:"120px"}}>pending</Button>,
+        Status: <Button sx={{ background: '#bce785', color: 'black' }}>pending</Button>,
     },
     {
         id: 3,
@@ -131,7 +131,7 @@ const columns = [
     },
 ];
 
-function Order() {
+function Stock() {
     const classes = useStyles();
     const [searchQuery, setSearchQuery] = useState('');
     const [filters, setFilters] = useState({
@@ -149,31 +149,13 @@ function Order() {
                 display:"flex",
                 flexDirection:"column"
             }}}>
-                <Typography>Orders</Typography>
-                <Box  sx={{'@media(max-width:576px)':{
-                display:"flex",
-                flexDirection:"column",
-              
-            }}}>
-                    <Button variant="outlined" color="primary" sx={{'@media(max-width:576px)':{
-                marginTop:".5rem"
-              
-            }}}>
-                        Export to Excel
-                    </Button>
-                    <Button variant="outlined" color="primary" sx={{'@media(max-width:576px)':{
-                marginTop:".5rem"
-              
-            }}}>
-                        Import Orders
-                    </Button>
-                    <Button variant="contained" color="primary" startIcon={<AddIcon />} sx={{'@media(max-width:576px)':{
-                marginTop:".5rem"
-              
-            }}}>
-                        New Orders
-                    </Button>
-                </Box>
+                <Typography>In stock</Typography>
+
+
+                <Button variant="contained" color="primary" startIcon={<AddIcon />}>
+                    New Stock
+                </Button>
+
             </Box>
             <hr color="#f3f4ff" />
             <Box sx={{'@media(max-width:576px)':{
@@ -195,22 +177,12 @@ function Order() {
                     }}
                     className={classes.spacing}
                 />
-                <Box display="flex" gap={1} alignItems="center" mt={1} sx={{'@media(max-width:576px)':{
+                <Box display="flex" gap={2} alignItems="center" mt={2} sx={{'@media(max-width:576px)':{
                 display:"flex",
                 flexDirection:"column"
             }}}>
                     <CalendarMonthIcon className={classes.sp1} />
-                    <FormControl fullWidth>
-                        <InputLabel id="sales-label">Sales</InputLabel>
-                        <Select
-                            labelId="sales-label"
-                            value={filters.sales}
-                            onChange={handleFilterChange('sales')}
-                        >
-                            <MenuItem value="Store A">Store A</MenuItem>
-                            <MenuItem value="Store B">Store B</MenuItem>
-                        </Select>
-                    </FormControl>
+
                     <FormControl fullWidth>
                         <InputLabel id="status-label">Status</InputLabel>
                         <Select
@@ -218,8 +190,8 @@ function Order() {
                             value={filters.status}
                             onChange={handleFilterChange('status')}
                         >
-                            <MenuItem value="completed">Completed</MenuItem>
-                            <MenuItem value="pending">Pending</MenuItem>
+                            <MenuItem value="completed">status</MenuItem>
+                            <MenuItem value="pending">status</MenuItem>
                         </Select>
                     </FormControl>
                 </Box>
@@ -236,4 +208,4 @@ function Order() {
     );
 }
 
-export default Order;
+export default Stock;

@@ -81,8 +81,8 @@ function Dashboard() {
 
 
   return (
-    <Container maxWidth="lg" sx={{ background: "#edf0f2" }}>
-      <Box display="flex" sx={{ marginTop: "3rem" }} justifyContent="space-around" flexWrap="wrap">
+    <Container maxWidth="lg" sx={{ background: "#edf0f2" , height:"900px" }}>
+      <Box display="flex" sx={{ paddingTop: "3rem" }} justifyContent="space-around" flexWrap="wrap">
         {formData.map((product) => (
           <Card key={product.id}>
 
