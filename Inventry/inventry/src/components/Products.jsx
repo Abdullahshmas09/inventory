@@ -15,6 +15,7 @@ import {
     TextField,
 } from "@mui/material";
 import styled from "styled-components";
+import { Form } from "react-router-dom";
 
 const H1 = styled.h1`
   font-size: var(--heading-size);
@@ -64,21 +65,35 @@ function Products() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+ 
+        if (
+            !formData.brandCategory ||
+            !formData.brandImage ||
+            !formData.brandName ||
+            !formData.productDescription ||
+            !formData.productName ||
+            !formData.productPrice
+        ) {
+            alert("Please fill in all the fields.");
+            return;
+        }
+    
+     
         if (isEditMode) {
-
             setProducts((prev) =>
                 prev.map((product, index) =>
                     index === selectedProductIndex ? formData : product
                 )
             );
         } else {
-
-            setProducts((prev) => [...prev, formData]);
+           
+            setProducts((data) => [...data, formData]);
         }
+   
         setFormData(initialFormState);
         handleClose();
     };
-
+    
     const handleDelete = (index) => {
         setProducts((prev) => prev.filter((_, i) => i !== index));
     };

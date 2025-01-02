@@ -118,50 +118,53 @@ function Layout({ children }) {
                     </Box>
                 </Toolbar>
             </AppBar>
+{
+    isLoggedIn &&    <Drawer
+    anchor="left"
+    open={drawerOpen}
+    onClose={toggleDrawer(false)}
+    PaperProps={{
+        className: classes.drawerPaper,
+    }}
+> 
 
-            <Drawer
-                anchor="left"
-                open={drawerOpen}
-                onClose={toggleDrawer(false)}
-                PaperProps={{
-                    className: classes.drawerPaper,
-                }}
-            >
-                <div className={classes.iconContainer}>
-                    <Link to="/dashboard">
-                        <GridViewIcon style={{ fontSize: "3rem" ,}} className={classes.reduce} />
-                    </Link>
-                    <Typography color="initial" style={{ marginLeft: ".3rem"  , fontWeight:"bold"}} className={classes.bottom}>
-                        Dashboard
-                    </Typography>
-                    <Link to="/stock">
-                        <GridViewIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
-                    </Link>
-                    <Typography color="initial" style={{ marginLeft: ".3rem" , fontWeight:"bold"}} className={classes.bottom}>
-                        Stock
-                    </Typography>
-                    <Link to="/product">
-                        <GridViewIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
-                    </Link>
-                    <Typography color="initial" style={{ marginLeft: ".3rem" , fontWeight:"bold"}} className={classes.bottom}>
-                        Product
-                    </Typography>
-                    <Link to="/order">
-                        <GridViewIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
-                    </Link>
+    <div className={classes.iconContainer}>
+        <Link to="/dashboard">
+            <GridViewIcon style={{ fontSize: "3rem" ,}} className={classes.reduce} />
+        </Link>
+        <Typography color="initial" style={{ marginLeft: ".3rem"  , fontWeight:"bold"}} className={classes.bottom}>
+            Dashboard
+        </Typography>
+        <Link to="/stock">
+            <GridViewIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
+        </Link>
+        <Typography color="initial" style={{ marginLeft: ".3rem" , fontWeight:"bold"}} className={classes.bottom}>
+            Stock
+        </Typography>
+        <Link to="/product">
+            <GridViewIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
+        </Link>
+        <Typography color="initial" style={{ marginLeft: ".3rem" , fontWeight:"bold"}} className={classes.bottom}>
+            Product
+        </Typography>
+        <Link to="/order">
+            <GridViewIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
+        </Link>
 
-                    <Typography color="initial" style={{ marginLeft: ".7rem" , fontWeight:"bold"}} className={classes.bottom}>
-                        Order
-                    </Typography>
-                    <Link to="/sales">
-                        <GridViewIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
-                    </Link>
+        <Typography color="initial" style={{ marginLeft: ".7rem" , fontWeight:"bold"}} className={classes.bottom}>
+            Order
+        </Typography>
+        <Link to="/sales">
+            <GridViewIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
+        </Link>
 
-                    <Typography color="initial" style={{ marginLeft: ".7rem" , fontWeight:"bold"}} className={classes.bottom}>
-                        Sales
-                    </Typography>
-                </div>
-            </Drawer>
+        <Typography color="initial" style={{ marginLeft: ".7rem" , fontWeight:"bold"}} className={classes.bottom}>
+            Sales
+        </Typography>
+    </div>
+</Drawer>
+}
+         
 
             <main style={{ padding: "16px" }}>{children}</main>
        
