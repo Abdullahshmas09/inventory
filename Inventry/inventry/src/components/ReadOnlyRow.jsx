@@ -1,4 +1,3 @@
-import React from "react";
 import { TableCell, TableRow, Button } from "@mui/material";
 
 function ReadOnlyRow({ sale, handleEditClick, handleDelete }) {

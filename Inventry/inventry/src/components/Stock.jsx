@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Container from '@mui/material/Container';
 import styled from 'styled-components';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import { InputAdornment, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { InputAdornment, FormControl,  Select, MenuItem } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -169,6 +169,12 @@ function Stock() {
                     id="outlined-basic"
                     label="Search Order ID"
                     variant="outlined"
+                    size='small'
+                    sx={{width:"360px" , marginTop:"1rem" ,
+                        '@media(max-width:576px)':{
+                           width:"100%"
+                        }
+                    }}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     InputProps={{

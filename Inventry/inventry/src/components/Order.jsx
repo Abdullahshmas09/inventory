@@ -198,6 +198,13 @@ function Order() {
                     label="Search Order ID"
                     variant="outlined"
                     value={searchQuery}
+                    sx={{
+                        width: "360px", marginTop: ".5rem",
+                        '@media(max-Width:576px)': {
+                            width: "100%"
+                        }
+                    }}
+                    size='small'
                     onChange={(e) => setSearchQuery(e.target.value)}
                     InputProps={{
                         startAdornment: (

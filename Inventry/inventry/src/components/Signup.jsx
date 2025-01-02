@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Button, Grid2 } from '@mui/material'
-import { Box, Container, Typography, TextField, FormControlLabel, Checkbox } from '@mui/material'
+import { Box, Container, TextField, FormControlLabel, Checkbox } from '@mui/material'
 import register from "../images/image 3 (2).png"
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
