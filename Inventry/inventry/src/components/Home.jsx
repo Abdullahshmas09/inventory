@@ -12,12 +12,31 @@ const Container = styled.div`
   background: linear-gradient(to bottom right, #4facfe, #00f2fe);
 `;
 
+const Image = styled.img`
+@media (max-width: 576px) {
+  margin-top: -3rem;
+  width: 90%;
+  height: auto;
+}
+`
 function Home() {
   return (
     <Container>
-      <Box display="flex" alignItems="center" justifyContent="center">
-        <img src={invent} width={500} alt="Inventory" />
-        <Typography variant="h3" color="white" ml={3}>
+      <Box display='flex' alignItems='center' justifyContent='center' sx={{
+        '@media(max-width:576px)': {
+          display: "flex",
+          flexDirection: "column"
+        }
+      }}>
+        <Image src={invent} width={500} alt='Inventory'
+        />
+        <Typography variant='h3' color='white' ml={3} sx={{
+          '@media(max-width:576px)': {
+            fontSize: "20px",
+            marginLeft: "0",
+            marginTop: "1rem",
+          }
+        }}>
           Inventory Management System
         </Typography>
       </Box>

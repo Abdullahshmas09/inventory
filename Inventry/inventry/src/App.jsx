@@ -11,21 +11,20 @@ import Products from './components/Products';
 import Stock from './components/Stock';
 import Sales from './components/Sales';
 
-
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/order" element={<Order />} />
-          <Route path="/product" element={<Products />} />
-          <Route path="/stock" element={<Stock />} />
-          <Route path="/sales" element={<Sales />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/order' element={<Order />} />
+          <Route path='/product' element={<Products />} />
+          <Route path='/stock' element={<Stock />} />
+          <Route path='/sales' element={<Sales />} />
         </Routes>
       </Layout>
     </Router>

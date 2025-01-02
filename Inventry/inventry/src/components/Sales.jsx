@@ -1,4 +1,4 @@
-import  { useState, Fragment } from "react";
+import { useState, Fragment } from 'react';
 import {
   Container,
   Table,
@@ -11,22 +11,22 @@ import {
   Button,
   Box,
   TextField,
-} from "@mui/material";
-import { nanoid } from "nanoid";
-import ReadOnlyRow from "./ReadOnlyRow";
-import EditableRow from "./EditableRow";
+} from '@mui/material';
+import { nanoid } from 'nanoid';
+import ReadOnlyRow from './ReadOnlyRow';
+import EditableRow from './EditableRow';
 
 function Sales() {
   const [salesData, setSalesData] = useState([
-    { id: nanoid(), product: "Product A", quantity: 3, total: "$30" },
-    { id: nanoid(), product: "Product B", quantity: 1, total: "$15" },
+    { id: nanoid(), product: 'Product A', quantity: 3, total: '$30' },
+    { id: nanoid(), product: 'Product B', quantity: 1, total: '$15' },
   ]);
 
   const [editSalesId, setEditSalesId] = useState(null); // To track the row being edited
   const [addFormData, setAddFormData] = useState({
-    product: "",
-    quantity: "",
-    total: "",
+    product: '',
+    quantity: '',
+    total: '',
   });
 
   // Handle form input changes for adding a new item
@@ -45,7 +45,7 @@ function Sales() {
       total: addFormData.total,
     };
     setSalesData((prev) => [...prev, newSale]);
-    setAddFormData({ product: "", quantity: "", total: "" });
+    setAddFormData({ product: '', quantity: '', total: '' });
   };
 
   // Handle clicking the Edit button
@@ -57,7 +57,7 @@ function Sales() {
   // Handle saving changes made to the editable row
   const handleSaveClick = (id, updatedData) => {
     setSalesData((prev) =>
-      prev.map((sale) => (sale.id === id ? { ...sale, ...updatedData } : sale))
+      prev.map((sale) => (sale.id === id ? { ...sale, ...updatedData } : sale)),
     );
     setEditSalesId(null); // Exit edit mode
   };
@@ -80,9 +80,9 @@ function Sales() {
           <TableHead>
             <TableRow>
               <TableCell>Product</TableCell>
-              <TableCell align="center">Quantity</TableCell>
-              <TableCell align="center">Total</TableCell>
-              <TableCell align="center">Actions</TableCell>
+              <TableCell align='center'>Quantity</TableCell>
+              <TableCell align='center'>Total</TableCell>
+              <TableCell align='center'>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -107,34 +107,35 @@ function Sales() {
         </Table>
       </TableContainer>
 
-      <Box component="form" onSubmit={handleAddFormSubmit} mt={2}>
+      <Box component='form' onSubmit={handleAddFormSubmit} mt={2}>
         <TextField
-          label="Product"
-          name="product"
+          label='Product'
+          name='product'
           value={addFormData.product}
           onChange={handleAddFormChange}
           required
-
         />
         <TextField
-          label="Quantity"
-          name="quantity"
-          type="number"
+          label='Quantity'
+          name='quantity'
+          type='number'
           value={addFormData.quantity}
           onChange={handleAddFormChange}
           required
-
           sx={{ mx: 2 }}
         />
         <TextField
-          label="Total"
-          name="total"
+          label='Total'
+          name='total'
           value={addFormData.total}
           onChange={handleAddFormChange}
           required
-
         />
-        <Button type="submit" variant="contained" sx={{ marginLeft: "1rem", marginTop: ".5rem" }}>
+        <Button
+          type='submit'
+          variant='contained'
+          sx={{ marginLeft: '1rem', marginTop: '.5rem' }}
+        >
           Add Item
         </Button>
       </Box>

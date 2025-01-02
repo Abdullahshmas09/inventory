@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { TableCell, TableRow, TextField, Button } from "@mui/material";
+import React, { useState } from 'react';
+import { TableCell, TableRow, TextField, Button } from '@mui/material';
 
 function EditableRow({ sale, handleSaveClick, handleCancelClick }) {
   const [editFormData, setEditFormData] = useState({
@@ -7,7 +7,6 @@ function EditableRow({ sale, handleSaveClick, handleCancelClick }) {
     quantity: sale.quantity,
     total: sale.total,
   });
-
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -21,37 +20,37 @@ function EditableRow({ sale, handleSaveClick, handleCancelClick }) {
     <TableRow>
       <TableCell>
         <TextField
-          name="product"
+          name='product'
           value={editFormData.product}
           onChange={handleInputChange}
         />
       </TableCell>
       <TableCell>
         <TextField
-          name="quantity"
-          type="number"
+          name='quantity'
+          type='number'
           value={editFormData.quantity}
           onChange={handleInputChange}
         />
       </TableCell>
       <TableCell>
         <TextField
-          name="total"
+          name='total'
           value={editFormData.total}
           onChange={handleInputChange}
         />
       </TableCell>
-      <TableCell align="center">
+      <TableCell align='center'>
         <Button
-          variant="contained"
-          color="success"
+          variant='contained'
+          color='success'
           onClick={() => handleSaveClick(sale.id, editFormData)}
         >
           Save
         </Button>
         <Button
-          variant="outlined"
-          color="error"
+          variant='outlined'
+          color='error'
           onClick={handleCancelClick}
           sx={{ ml: 1 }}
         >
