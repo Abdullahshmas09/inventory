@@ -135,8 +135,9 @@ function Order() {
     const classes = useStyles();
     const [searchQuery, setSearchQuery] = useState('');
     const [filters, setFilters] = useState({
-        sales: '',
-        status: '',
+        sales: 'sales',
+        status: 'status',
+        filter: 'filter'
     });
 
     const handleFilterChange = (key) => (event) => {
@@ -215,34 +216,40 @@ function Order() {
                 }}>
                     <CalendarMonthIcon className={classes.sp1} />
                     <FormControl fullWidth>
-                        <InputLabel id="sales-label">Sales</InputLabel>
+
                         <Select
                             labelId="sales-label"
                             value={filters.sales}
                             onChange={handleFilterChange('sales')}
+
                         >
+                            <MenuItem value="sales" >sales</MenuItem>
                             <MenuItem value="Store A">sales</MenuItem>
                             <MenuItem value="Store B">sales</MenuItem>
                         </Select>
                     </FormControl>
                     <FormControl fullWidth>
-                        <InputLabel id="status-label">Status</InputLabel>
+
                         <Select
                             labelId="status-label"
                             value={filters.status}
                             onChange={handleFilterChange('status')}
+
                         >
+                            <MenuItem value="status">status</MenuItem>
                             <MenuItem value="completed">status</MenuItem>
                             <MenuItem value="pending">status</MenuItem>
                         </Select>
                     </FormControl>
                     <FormControl fullWidth>
-                        <InputLabel id="status-label">Filter</InputLabel>
+
                         <Select
                             labelId="status-label"
                             value={filters.filter}
                             onChange={handleFilterChange('filter')}
+
                         >
+                            <MenuItem value="filter" >filter</MenuItem>
                             <MenuItem value="completed">filter</MenuItem>
                             <MenuItem value="pending">filter</MenuItem>
                         </Select>

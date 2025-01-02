@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
     Grid2,
     Box,
     Container,
-    Typography,
     TextField,
     Button,
 } from "@mui/material";
@@ -16,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../redux/slices/counterSlice";
 
 
- 
+
 
 const Image = styled.img`
 @media (max-width: 576px) {
@@ -27,8 +26,8 @@ const Image = styled.img`
 
 function Login() {
 
-   const dispatch = useDispatch()
-   const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -94,8 +93,6 @@ function Login() {
                                 fullWidth
                                 inputProps={{
                                     pattern: "^[A-Z].*123$",
-
-                                 
                                 }}
                                 onChange={handleChange}
                             />

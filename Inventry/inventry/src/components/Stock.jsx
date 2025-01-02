@@ -58,7 +58,7 @@ const data = [
         sales: 'store name',
         Destination: 'Kathmandu',
         items: '5',
-        Status: <Button sx={{ background: '#bce785', color: 'black' , width:"118px" }}>pending</Button>,
+        Status: <Button sx={{ background: '#bce785', color: 'black', width: "118px" }}>pending</Button>,
     },
     {
         id: 3,
@@ -135,8 +135,7 @@ function Stock() {
     const classes = useStyles();
     const [searchQuery, setSearchQuery] = useState('');
     const [filters, setFilters] = useState({
-        sales: '',
-        status: '',
+        status: 'status',
     });
 
     const handleFilterChange = (key) => (event) => {
@@ -145,10 +144,12 @@ function Stock() {
 
     return (
         <Cont maxWidth="lg">
-            <Box sx={{'@media(max-width:576px)':{
-                display:"flex",
-                flexDirection:"column"
-            }}}>
+            <Box sx={{
+                '@media(max-width:576px)': {
+                    display: "flex",
+                    flexDirection: "column"
+                }
+            }}>
                 <Typography>In stock</Typography>
 
 
@@ -158,10 +159,12 @@ function Stock() {
 
             </Box>
             <hr color="#f3f4ff" />
-            <Box sx={{'@media(max-width:576px)':{
-                display:"flex",
-                flexDirection:"column"
-            }}}>
+            <Box sx={{
+                '@media(max-width:576px)': {
+                    display: "flex",
+                    flexDirection: "column"
+                }
+            }}>
                 <TextField
                     id="outlined-basic"
                     label="Search Order ID"
@@ -177,19 +180,23 @@ function Stock() {
                     }}
                     className={classes.spacing}
                 />
-                <Box display="flex" gap={2} alignItems="center" mt={2} sx={{'@media(max-width:576px)':{
-                display:"flex",
-                flexDirection:"column"
-            }}}>
+                <Box display="flex" gap={2} alignItems="center" mt={2} sx={{
+                    '@media(max-width:576px)': {
+                        display: "flex",
+                        flexDirection: "column"
+                    }
+                }}>
                     <CalendarMonthIcon className={classes.sp1} />
 
                     <FormControl fullWidth>
-                        <InputLabel id="status-label">Status</InputLabel>
+
                         <Select
+
                             labelId="status-label"
                             value={filters.status}
                             onChange={handleFilterChange('status')}
                         >
+                            <MenuItem value="status" >status</MenuItem>
                             <MenuItem value="completed">status</MenuItem>
                             <MenuItem value="pending">status</MenuItem>
                         </Select>

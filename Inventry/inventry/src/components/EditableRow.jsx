@@ -8,7 +8,7 @@ function EditableRow({ sale, handleSaveClick, handleCancelClick }) {
     total: sale.total,
   });
 
-  // Handle changes in the editable inputs
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setEditFormData((prev) => ({

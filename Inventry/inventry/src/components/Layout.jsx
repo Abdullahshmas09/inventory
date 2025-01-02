@@ -9,10 +9,10 @@ import {
     Button,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { makeStyles } from "@material-ui/core/styles";
-import DashboardIcon from "@mui/icons-material/Dashboard";
+import { makeStyles } from "@mui/styles";
+import GridViewIcon from '@mui/icons-material/GridView';
 import { Link } from "react-router-dom";
-import { Typography } from "@mui/material";
+import { Typography, Container } from "@mui/material";
 import Search from '../images/search.png';
 import Bel from '../images/bell.png';
 import { useDispatch, useSelector } from "react-redux";
@@ -31,9 +31,12 @@ const useStyles = makeStyles({
     },
     reduce: {
         marginLeft: "1rem",
+        
+        
     },
     bottom: {
         marginTop: "1rem",
+      
     },
 });
 
@@ -52,11 +55,11 @@ function Layout({ children }) {
     const handleLogout = () => {
         dispatch(logout());
         navigate("/")
-        
+
     };
 
     return (
-        <div>
+        <div> 
             <CssBaseline />
 
             <AppBar position="static" sx={{ background: "white" }}>
@@ -73,7 +76,7 @@ function Layout({ children }) {
                     <Box display="flex" ml="auto">
                         {isLoggedIn ? (
                             <Box display="flex" mx="" my="" sx="">
-                                <Typography variant="h6" style={{ marginRight: "1rem", color: "black" }}>
+                                <Typography variant="h6" style={{ marginRight: "1rem", color: "black"  }}>
                                     {email}
                                 </Typography>
                                 <Button
@@ -84,7 +87,7 @@ function Layout({ children }) {
                                 >
                                     Logout
                                 </Button>
-                                
+
                             </Box>
                         ) : (
                             <>
@@ -93,7 +96,7 @@ function Layout({ children }) {
                                     alt="Search"
                                     style={{
                                         background: "#eaeaea",
-                                        padding: "3px",
+                                        padding: "5px",
                                         borderRadius: ".3rem",
                                         marginRight: ".4rem",
                                     }}
@@ -103,7 +106,7 @@ function Layout({ children }) {
                                     width={24}
                                     height={24}
                                     alt="Bell"
-                                    style={{ marginRight: ".4rem", marginTop: ".2rem" }}
+                                    style={{ marginRight: ".4rem", marginTop: ".2rem" , }}
                                 />
                                 <Link to="/signup">
                                     <Button variant="contained" color="primary">
@@ -126,41 +129,42 @@ function Layout({ children }) {
             >
                 <div className={classes.iconContainer}>
                     <Link to="/dashboard">
-                        <DashboardIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
+                        <GridViewIcon style={{ fontSize: "3rem" ,}} className={classes.reduce} />
                     </Link>
-                    <Typography color="initial" style={{ marginLeft: ".3rem" }} className={classes.bottom}>
+                    <Typography color="initial" style={{ marginLeft: ".3rem"  , fontWeight:"bold"}} className={classes.bottom}>
                         Dashboard
                     </Typography>
                     <Link to="/stock">
-                        <DashboardIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
+                        <GridViewIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
                     </Link>
-                    <Typography color="initial" style={{ marginLeft: ".3rem" }} className={classes.bottom}>
+                    <Typography color="initial" style={{ marginLeft: ".3rem" , fontWeight:"bold"}} className={classes.bottom}>
                         Stock
                     </Typography>
                     <Link to="/product">
-                        <DashboardIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
+                        <GridViewIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
                     </Link>
-                    <Typography color="initial" style={{ marginLeft: ".3rem" }} className={classes.bottom}>
+                    <Typography color="initial" style={{ marginLeft: ".3rem" , fontWeight:"bold"}} className={classes.bottom}>
                         Product
                     </Typography>
                     <Link to="/order">
-                        <DashboardIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
+                        <GridViewIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
                     </Link>
-                    
-                    <Typography color="initial" style={{ marginLeft: ".7rem" }} className={classes.bottom}>
+
+                    <Typography color="initial" style={{ marginLeft: ".7rem" , fontWeight:"bold"}} className={classes.bottom}>
                         Order
                     </Typography>
                     <Link to="/sales">
-                        <DashboardIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
+                        <GridViewIcon style={{ fontSize: "3rem" }} className={classes.reduce} />
                     </Link>
-                    
-                    <Typography color="initial" style={{ marginLeft: ".7rem" }} className={classes.bottom}>
+
+                    <Typography color="initial" style={{ marginLeft: ".7rem" , fontWeight:"bold"}} className={classes.bottom}>
                         Sales
                     </Typography>
                 </div>
             </Drawer>
 
             <main style={{ padding: "16px" }}>{children}</main>
+       
         </div>
     );
 }

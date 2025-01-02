@@ -114,7 +114,7 @@ function Sales() {
           value={addFormData.product}
           onChange={handleAddFormChange}
           required
-   
+
         />
         <TextField
           label="Quantity"
@@ -123,7 +123,7 @@ function Sales() {
           value={addFormData.quantity}
           onChange={handleAddFormChange}
           required
-        
+
           sx={{ mx: 2 }}
         />
         <TextField
@@ -132,9 +132,9 @@ function Sales() {
           value={addFormData.total}
           onChange={handleAddFormChange}
           required
-       
+
         />
-        <Button type="submit" variant="contained" sx={{marginLeft:"1rem" , marginTop:".5rem"}}>
+        <Button type="submit" variant="contained" sx={{ marginLeft: "1rem", marginTop: ".5rem" }}>
           Add Item
         </Button>
       </Box>
